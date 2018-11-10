@@ -1,0 +1,2 @@
+Reading prologue: NAME(Reset_Handler) ADDR(0x400ecc) LAST_LINE(0x400F88) PC(0x400ECC) NUM_INST_UNTIL_FIRST_NONSEQ_OR_PC(-1) NO_INST READING(0x400ECC - 0x400ECC)
+  Reverse executing

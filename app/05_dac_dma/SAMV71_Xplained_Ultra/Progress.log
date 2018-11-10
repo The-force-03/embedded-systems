@@ -1,0 +1,10 @@
+CONVERTING	C:\Users\Willy\Documents\Mirror\ITESO_ES\Embedded_Systems\DMA_DAC\SAMV71x_Tezmol\app\05_dac_dma\SAMV71_Xplained_Ultra\Debug\tau.elf
+LOADING	C:\Users\Willy\Documents\Mirror\ITESO_ES\Embedded_Systems\DMA_DAC\SAMV71x_Tezmol\app\05_dac_dma\SAMV71_Xplained_Ultra\Debug\tau.elf
+ANALYZING
+ANALYZING
+EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
+DEBUG	PROTOCOL: SWD; RESET: SoC
+PROGRAMMING 	107248 bytes
+UMI INFO	Loading UMI monitor...
+PROGRAMMING	Atmel ATSAMV7 (2048 kB) (4 sectors)
+UMI INFO	Unloading UMI monitor...
