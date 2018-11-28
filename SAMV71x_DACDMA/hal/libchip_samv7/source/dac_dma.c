@@ -165,7 +165,8 @@ static uint8_t _Dac_configureLinkList2(Dacc *pDacHw, void *pXdmad, DacCmd *pComm
     
 	xdmadCfg.mbr_cfg = XDMAC_CC_TYPE_PER_TRAN 
 					 | XDMAC_CC_MBSIZE_SINGLE 
-					 | XDMAC_CC_DSYNC_MEM2PER 
+					 | XDMAC_CC_DSYNC_MEM2PER
+           | XDMAC_CC_SWREQ_HWR_CONNECTED
 					 | XDMAC_CC_CSIZE_CHK_1 
 					 | XDMAC_CC_DWIDTH_WORD
 					 | XDMAC_CC_SIF_AHB_IF0 
@@ -307,7 +308,7 @@ uint32_t Dac_SendData( DacDma *pDacd, DacCmd *pCommand)
 	if (_DacConfigureDmaChannels(pDacd) )
 		return DAC_ERROR_LOCK;
 
-	if (_Dac_configureLinkList2(pDacHw, pDacd->pXdmad, pCommand))
+	if (_Dac_configureLinkList(pDacHw, pDacd->pXdmad, pCommand))
 		return DAC_ERROR_LOCK;
 
 	SCB_CleanDCache();

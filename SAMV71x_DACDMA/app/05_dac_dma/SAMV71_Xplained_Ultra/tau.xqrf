@@ -5,7 +5,7 @@
    <VersionLow>1</VersionLow>
   </REG_HEADER>
   <REG_ROOT>
-   <RegVer>1259339776</RegVer>
+   <RegVer>1279262720</RegVer>
    <Project>
     <CompilerType>0</CompilerType>
     <GlobalOptions>
@@ -45,7 +45,7 @@
      <LinkerRelPath>$(CMPDIR)bin\arm-none-eabi-gcc.exe</LinkerRelPath>
      <LInpExtensions>o;a</LInpExtensions>
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
-     <NewInvoke>0</NewInvoke>
+     <ParallelBuild>0</ParallelBuild>
      <PathSeparator>\</PathSeparator>
      <RootDir></RootDir>
      <RunAfterAsm></RunAfterAsm>
@@ -337,6 +337,13 @@
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs -save-temps=obj -o $(OUTPUTDIR)$(NOEXT).o</CompilerOptions>
         </FileOptios>
        </File.12>
+       <File.13>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\tc.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__&#xA;ENABLE_TCM</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs -save-temps=obj -o $(OUTPUTDIR)$(NOEXT).o</CompilerOptions>
+        </FileOptios>
+       </File.13>
        <File.2>
         <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\pmc.c</FileName>
         <FileOptios>

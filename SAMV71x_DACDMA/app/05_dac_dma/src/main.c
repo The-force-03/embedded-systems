@@ -52,7 +52,10 @@ extern int main( void )
 	vfnWdtCtrl_Disable();
 	/* Enable I and D cache */
 	SCB_EnableICache();
-	SCB_EnableDCache(); 
+	SCB_EnableDCache();
+  
+	//TimeTick_Configure ();
+  
 	/* Dynamic Memory Allocation initialization */
 	vfnMemAlloc_Init(&DynamicMemAlloc_config[0]);
 	/* Configure LEDs */

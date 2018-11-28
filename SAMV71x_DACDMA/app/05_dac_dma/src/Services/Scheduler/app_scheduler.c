@@ -415,7 +415,7 @@ void vfnTask_Scheduler(void)
 * \return   void
 * \todo
 */
-__attribute__ ((section(".itcm_code")))
+//__attribute__ ((section(".itcm_code")))
 void vfnScheduler_Callback(void)
 {
     /*-- Update scheduler control variable --*/

@@ -342,7 +342,7 @@ __STATIC_INLINE void TCM_Disable(void)
 void Reset_Handler(void)
 {
 	    uint32_t *pSrc, *pDest;
-        uint8_t *u8dst;
+      uint8_t *u8dst;
 	    uint8_t *u8src;
 
 		/* Initialize the relocate segment */
