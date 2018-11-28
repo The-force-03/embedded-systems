@@ -136,9 +136,9 @@ static uint8_t _Dac_configureLinkListOptimized(Dacc *pDacHw, void *pXdmad, DacCm
 	/* */
 
 	dmaWriteOneDescriptor.mbr_ubc = XDMA_UBC_NVIEW_NDV1 
-								| XDMA_UBC_NDE_FETCH_EN
-								| XDMA_UBC_NSEN_UPDATED
-								| XDMAC_CUBC_UBLEN(27778);
+					| XDMA_UBC_NDE_FETCH_EN
+					| XDMA_UBC_NSEN_UPDATED
+					| XDMAC_CUBC_UBLEN(27778);
 	/* Configure source address */							
 	dmaWriteOneDescriptor.mbr_sa = (uint32_t)pBuffer;
 	/* Configure destination address: DACC_CDR register is the Conversion Data Register (entry point of the DAC data FIFO */
