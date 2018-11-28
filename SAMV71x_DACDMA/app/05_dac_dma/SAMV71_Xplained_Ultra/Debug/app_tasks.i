@@ -18853,7 +18853,7 @@ void TASKS_LIST_2MS_B( void )
 
 void TASKS_LIST_10MS( void )
 {
-    vfnLedCtrl_BlinkingPattern();
+
 
 }
 

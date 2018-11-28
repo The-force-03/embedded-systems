@@ -363,7 +363,15 @@
 #define __SAMV71Q21__ 1
 #define ENABLE_TCM 1
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c"
-# 19 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c"
+# 18 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c"
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 1
+# 12 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h"
+#define STD_TYPES_H 
+
+
+
+
+
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\bsp\\libboard_samv7-ek/board.h" 1
 # 77 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\bsp\\libboard_samv7-ek/board.h"
 #define _BOARD_H_ 
@@ -26758,9 +26766,41 @@ extern int _write( int file, char *ptr, int len );
 
 
 #define PINS_VBUS_EN {PIO_PC16, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
-# 20 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 19 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
 
 
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7/compiler.h" 1
+# 23 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\cmsis\\CMSIS\\Include/core_cm7.h" 1
+# 25 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\samv7/system_samv71.h" 1
+# 27 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\samv7/samv71.h" 1
+# 29 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+
+
+
+
+  typedef uint8_t Std_ReturnType;
+
+
+#define STATUSTYPEDEFINED 
+#define E_OK (Std_ReturnType)0x00
+#define E_NOT_OK (Std_ReturnType)0x01
+
+
+#define STD_HIGH 0x01
+#define STD_LOW 0x00
+#define STD_ACTIVE 0x01
+#define STD_IDLE 0x00
+#define STD_ON 0x01
+#define STD_OFF 0x00
+# 19 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Scheduler/app_scheduler.h" 1
 # 11 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Scheduler/app_scheduler.h"
@@ -26768,8 +26808,7 @@ extern int _write( int file, char *ptr, int len );
 
 
 
-# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7/compiler.h" 1
-# 16 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Scheduler/app_scheduler.h" 2
+
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/typedefs.h" 1
 # 12 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/typedefs.h"
 #define TYPEDEFS_H 
@@ -26870,7 +26909,7 @@ void vfnSchedulepoint( void );
 void vfnTask_Scheduler(void);
 
 void vfnScheduler_Callback( void );
-# 24 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 21 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\ECU Abstraction\\LED control/led_ctrl.h" 1
 # 13 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\ECU Abstraction\\LED control/led_ctrl.h"
@@ -26880,7 +26919,7 @@ void vfnLedCtrl_Configure( void );
 
 
 void vfnLedCtrl_BlinkingPattern(void);
-# 26 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 23 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\ECU Abstraction\\Serial control/serial_ctrl.h" 1
 # 13 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\ECU Abstraction\\Serial control/serial_ctrl.h"
@@ -26911,7 +26950,7 @@ void vfnSerialCtrl_Init( void );
 void vfnSerialCtrl_StartTx( void );
 
 void vfnSerialCtrl_Transfer(void);
-# 28 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 25 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Watchdog Timer Control/wdt_ctrl.h" 1
 # 11 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Watchdog Timer Control/wdt_ctrl.h"
@@ -26926,7 +26965,7 @@ void vfnWdtCtrl_Init(uint32_t Wdt_Period);
 
 void vfnWdtCtrl_Restart( void );
 void vfnWdtCtrl_Disable( void );
-# 30 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 27 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Memory/memory_allocation.h" 1
 # 12 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Services\\Memory/memory_allocation.h"
@@ -27016,8 +27055,8 @@ void vfnMemAlloc_Init( const tMemAlloc_config * mem_alloc_config );
 uint8_t * MemAlloc_Reserve( uint16_t u16SizeinBytes );
 
 void vfnMemAlloc_Erase( uint8_t * StartAddress , uint16_t u16SizeinBytes);
-# 32 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
-# 48 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c"
+# 29 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c" 2
+# 45 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\main.c"
 extern int main( void )
 {
 

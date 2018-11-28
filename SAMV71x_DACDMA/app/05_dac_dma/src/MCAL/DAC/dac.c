@@ -13,14 +13,13 @@
 * Include files
 *****************************************************************************************************/
 /** dac function prototypes and definitions */
-#include "board.h"
+#include "Std_Types.h"
+
 #include "dac.h"
 #include "dac_dma.h"
 #include "xdmad.h"
 /** Power Management Controller */
 #include "pmc.h"
-/** MCU-derivative specific definitions */
-#include "samv71.h"
 /** ECG sample data */
 #include "ecg_data.h"
 
@@ -30,8 +29,9 @@
 * Definition of module wide MACROs / #DEFINE-CONSTANTs 
 *****************************************************************************************************/
 /** SAMPLES per cycle*/
-#define SAMPLES         1000
+#define SAMPLES         27778
 #define TEST_CHANNEL    5
+#define TIMER_1MS       9375
 
 /*****************************************************************************************************
 * Definition of  VARIABLEs - 
@@ -94,27 +94,9 @@ void dac_initialization(void)
 	PMC_EnablePeripheral(ID_TC0);
 
 	TC_Configure( TC0, 0, TC_CMR_TCCLKS_TIMER_CLOCK2 | TC_CMR_WAVSEL_UP_RC | TC_CMR_WAVE | TC_CMR_ACPC_TOGGLE | TC_CMR_BCPB_TOGGLE );
-	TC0->TC_CHANNEL[ 0 ].TC_RC = 9375;
-
-	/* Configure and enable interrupt on RC compare */
-	NVIC_ClearPendingIRQ(TC0_IRQn);
-	NVIC_EnableIRQ(TC0_IRQn);
-  
-  TC_Start( TC0, 0 );
+	TC0->TC_CHANNEL[ 0 ].TC_RC = TIMER_1MS;
   
 }
-
-
-// void TC0_Handler(void)
-// {
-// 	volatile uint32_t dummy;
-//   
-//   prueba1++;
-//   printf("A");
-// 	/* Clear status bit to acknowledge interrupt */
-// 	dummy = TC0->TC_CHANNEL[ 0 ].TC_SR;
-// 
-// }
 
 /**
  *  \brief Configure DAC DMA and start DMA transfer.
@@ -130,4 +112,5 @@ void dac_dmaTransfer(void)
 	DacCommand.loopback = 1;
 	Dac_ConfigureDma(&Dacd, DACC, ID_DACC, &dmad);
 	Dac_SendData(&Dacd, &DacCommand);
+  TC_Start( TC0, 0 );
 }

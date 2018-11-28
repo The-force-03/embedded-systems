@@ -119,16 +119,20 @@ TASKS_LIST_10MS:
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset 7, -8
-	.cfi_offset 14, -4
+	@ link register save eliminated.
+	push	{r7}
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 51 0
-	bl	vfnLedCtrl_BlinkingPattern
 	.loc 1 53 0
-	pop	{r7, pc}
+	mov	sp, r7
+	.cfi_def_cfa_register 13
+	@ sp needed
+	ldr	r7, [sp], #4
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
 	.cfi_endproc
 .LFE130:
 	.size	TASKS_LIST_10MS, .-TASKS_LIST_10MS
@@ -301,7 +305,7 @@ TASKS_LIST_100MS:
 	.4byte	.LFE129-.LFB129
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x7
+	.uleb128 0x6
 	.4byte	.LASF12908
 	.byte	0x1
 	.byte	0x31
@@ -325,7 +329,7 @@ TASKS_LIST_100MS:
 	.4byte	.LFE132-.LFB132
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x8
+	.uleb128 0x7
 	.4byte	.LASF12911
 	.byte	0x4
 	.2byte	0x151
@@ -333,7 +337,7 @@ TASKS_LIST_100MS:
 	.uleb128 0x5
 	.byte	0x3
 	.4byte	cpu_irq_critical_section_counter
-	.uleb128 0x8
+	.uleb128 0x7
 	.4byte	.LASF12912
 	.byte	0x4
 	.2byte	0x152
@@ -347,7 +351,7 @@ TASKS_LIST_100MS:
 	.byte	0x1
 	.byte	0x2
 	.4byte	.LASF12913
-	.uleb128 0x9
+	.uleb128 0x8
 	.4byte	.LASF12916
 	.byte	0x5
 	.2byte	0x857
@@ -442,29 +446,6 @@ TASKS_LIST_100MS:
 	.byte	0
 	.byte	0
 	.uleb128 0x7
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0x19
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x6
-	.uleb128 0x40
-	.uleb128 0x18
-	.uleb128 0x2116
-	.uleb128 0x19
-	.byte	0
-	.byte	0
-	.uleb128 0x8
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -479,7 +460,7 @@ TASKS_LIST_100MS:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x9
+	.uleb128 0x8
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3

@@ -15,10 +15,7 @@
 
 /*~~~~~~  Headers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-/** Main group of includes for board definitions, chip definitions and type definitions */
-#include    "board.h"
-#include <stdbool.h>
-#include <stdio.h>
+#include "Std_Types.h"
 /** Task scheduler definitions */
 #include    "app_scheduler.h"
 /** LED control definitions */ 

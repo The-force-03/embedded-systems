@@ -364,6 +364,14 @@
 #define ENABLE_TCM 1
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c"
 # 16 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c"
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 1
+# 12 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h"
+#define STD_TYPES_H 
+
+
+
+
+
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\bsp\\libboard_samv7-ek/board.h" 1
 # 77 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\bsp\\libboard_samv7-ek/board.h"
 #define _BOARD_H_ 
@@ -26758,7 +26766,42 @@ extern int _write( int file, char *ptr, int len );
 
 
 #define PINS_VBUS_EN {PIO_PC16, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
+# 19 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7/compiler.h" 1
+# 23 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\cmsis\\CMSIS\\Include/core_cm7.h" 1
+# 25 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\samv7/system_samv71.h" 1
+# 27 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\samv7/samv71.h" 1
+# 29 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/Std_Types.h" 2
+
+
+
+
+
+  typedef uint8_t Std_ReturnType;
+
+
+#define STATUSTYPEDEFINED 
+#define E_OK (Std_ReturnType)0x00
+#define E_NOT_OK (Std_ReturnType)0x01
+
+
+#define STD_HIGH 0x01
+#define STD_LOW 0x00
+#define STD_ACTIVE 0x01
+#define STD_IDLE 0x00
+#define STD_ON 0x01
+#define STD_OFF 0x00
 # 17 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
+
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.h" 1
 # 13 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.h"
 #define __DAC_H 
@@ -26768,8 +26811,7 @@ extern int _write( int file, char *ptr, int len );
 
 
 
-# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7/compiler.h" 1
-# 21 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.h" 2
+
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/typedefs.h" 1
 # 12 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\Commons/typedefs.h"
 #define TYPEDEFS_H 
@@ -26795,41 +26837,39 @@ typedef void ( * tPtr_to_function )( void );
 # 22 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.h" 2
 # 38 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.h"
 void dac_initialization(void);
-# 18 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
-# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/dac_dma.h" 1
 # 19 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
-# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/xdmad.h" 1
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/dac_dma.h" 1
 # 20 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
+# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/xdmad.h" 1
+# 21 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/pmc.h" 1
-# 22 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
-
-# 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include\\samv7/samv71.h" 1
-# 24 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
+# 23 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\ecg_data.h" 1
 # 13 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\ecg_data.h"
 #define __ECG_DATA_H 
 # 38 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\ecg_data.h"
 const uint16_t ecg_resampled_integer[27778];
-# 26 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
+# 25 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
 
 # 1 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\include/tc.h" 1
-# 28 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
+# 27 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c" 2
 
 
 
 
 
-#define SAMPLES 1000
+#define SAMPLES 27778
 #define TEST_CHANNEL 5
+#define TIMER_1MS 9375
 
 
 
 
 
-uint32_t dacBuffer[1000];
-uint16_t prueba1=39;
+uint32_t dacBuffer[27778];
+uint16_t prueba1=0;
 uint32_t ModeReg = 0;
 
 
@@ -26853,40 +26893,39 @@ void dac_initialization(void)
 
 
 
-  { (((Dacc *)0x40040000U))->DACC_TRIGR = ((0x1u << 4) | (0x1u << 0) | (0x1u << 1) | (0x1u << 8)); };
 
+
+  { (((Dacc *)0x40040000U))->DACC_TRIGR = ((0x1u << 4) | (0x1u << 8) | (0x1u << 0) | (0x1u << 1)); };
 
  {(((Dacc *)0x40040000U))->DACC_CHER = (1 << (0));};
  {(((Dacc *)0x40040000U))->DACC_CHER = (1 << (1));};
 
- for (i = 0; i < 1000; i++)
+ for (i = 0; i < 27778; i++)
  {
   dacBuffer[i] = ecg_resampled_integer[i] << 1;
  }
-# 105 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c"
- PMC_EnablePeripheral((23));
 
- TC_FindMckDivisor( 1000, 150000000, &div, &tcclks, 150000000 );
+
+ PMC_EnablePeripheral((23));
 
  TC_Configure( ((Tc *)0x4000C000U), 0, (0x1u << 0) | (0x2u << 13) | (0x1u << 15) | (0x3u << 18) | (0x3u << 24) );
  ((Tc *)0x4000C000U)->TC_CHANNEL[ 0 ].TC_RC = 9375;
 
-
- NVIC_ClearPendingIRQ(TC0_IRQn);
- NVIC_EnableIRQ(TC0_IRQn);
-
-
-
-  TC_Start( ((Tc *)0x4000C000U), 0 );
-
 }
-# 140 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\app\\05_dac_dma\\src\\MCAL\\DAC\\dac.c"
+
+
+
+
+
+
+
 void dac_dmaTransfer(void)
 {
  DacCommand.dacChannel = 0;
- DacCommand.TxSize = 1000;
+ DacCommand.TxSize = 27778;
  DacCommand.pTxBuff = (uint8_t *)dacBuffer;
  DacCommand.loopback = 1;
  Dac_ConfigureDma(&Dacd, ((Dacc *)0x40040000U), (30), &dmad);
  Dac_SendData(&Dacd, &DacCommand);
+  TC_Start( ((Tc *)0x4000C000U), 0 );
 }

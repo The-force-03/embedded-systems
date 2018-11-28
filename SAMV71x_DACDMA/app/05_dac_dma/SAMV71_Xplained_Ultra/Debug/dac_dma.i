@@ -24576,8 +24576,10 @@ void __assert_func (const char *, int, const char *, const char *) __attribute__
 
 
 static uint32_t dacDmaTxChannel;
-static LinkedListDescriporView1 dmaWriteLinkList[1024];
-# 95 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
+static LinkedListDescriporView1 dmaWriteOneDescriptor;
+volatile uint32_t dummy;
+uint8_t flag = 0;
+# 97 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
 static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
 {
 
@@ -24589,6 +24591,10 @@ static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
 
  dacDmaTxChannel =
   XDMAD_AllocateChannel( pDacd->pXdmad, 0xFF, (30));
+
+  NVIC_ClearPendingIRQ(XDMAC_IRQn);
+  NVIC_EnableIRQ(XDMAC_IRQn);
+
  if ( dacDmaTxChannel == 0xFFFF ) {
   return 1;
  }
@@ -24597,43 +24603,8 @@ static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
   return 1;
  return 0;
 }
-
-static uint8_t _Dac_configure(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
-{
-  uint32_t xdmaCndc;
- sXdmadCfg xdmadCfg;
- uint32_t * pBuffer;
-
- uint32_t i;
- pBuffer = (uint32_t *)pCommand->pTxBuff;
-
-  xdmadCfg.mbr_ubc = (((0xffffffu << 0) & ((27778) << 0)));
-
-  xdmadCfg.mbr_sa = (uint32_t)pBuffer;
-
- xdmadCfg.mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
-
-  xdmadCfg.mbr_cfg = (0x1u << 0)
-      | (0x0u << 1)
-      | (0x1u << 4)
-      | (0x0u << 8)
-      | (0x1u << 11)
-      | (0x0u << 13)
-      | (0x1u << 14)
-      | (0x1u << 16)
-      | (0x0u << 18)
-      | (((0x7fu << 24) & ((XDMAIF_Get_ChannelNumber((30), 0 )) << 24)))
-                                                            ;
-  xdmaCndc = (0x0u << 0)
-        | (0x0u << 1)
-        | (0x0u << 2)
-        | (0x0u << 3);
-
-  XDMAD_ConfigureTransfer( pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, 0, (0x1u << 0));
- return 0;
-}
-
-static uint8_t _Dac_configureLinkList2(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
+# 128 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
+static uint8_t _Dac_configureLinkListOptimized(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
 {
  uint32_t xdmaCndc;
  sXdmadCfg xdmadCfg;
@@ -24643,75 +24614,24 @@ static uint8_t _Dac_configureLinkList2(Dacc *pDacHw, void *pXdmad, DacCmd *pComm
  pBuffer = (uint32_t *)pCommand->pTxBuff;
 
 
-  xdmadCfg.mbr_sa = (uint32_t)pBuffer;
+ dmaWriteOneDescriptor.mbr_ubc = (0x1u << 27)
+        | (0x1u << 24)
+        | (0x1u << 25)
+        | (((0xffffffu << 0) & ((27778) << 0)));
 
-  xdmadCfg.mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
+ dmaWriteOneDescriptor.mbr_sa = (uint32_t)pBuffer;
 
-  xdmadCfg.mbr_ubc = (((0xffffffu << 0) & ((27778) << 0)));
+ dmaWriteOneDescriptor.mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
 
- xdmadCfg.mbr_cfg = (0x1u << 0)
-      | (0x0u << 1)
-      | (0x1u << 4)
-           | (0x0u << 6)
-      | (0x0u << 8)
-      | (0x2u << 11)
-      | (0x0u << 13)
-      | (0x1u << 14)
-      | (0x1u << 16)
-      | (0x0u << 18)
-      | (((0x7fu << 24) & ((XDMAIF_Get_ChannelNumber((30), 0 )) << 24)))
-                                                            ;
-
-  xdmadCfg.mbr_bc = (((0xfffu << 0) & ((1) << 0)));
-
- xdmaCndc = (0x1u << 3)
-    | (0x0u << 0)
-    | (0x1u << 1)
-    | (0x1u << 2) ;
-
- XDMAD_ConfigureTransfer( pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, (uint32_t)&dmaWriteLinkList[0], (0x1u << 0));
- return 0;
-}
-# 197 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
-static uint8_t _Dac_configureLinkList(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
-{
- uint32_t xdmaCndc;
- sXdmadCfg xdmadCfg;
- uint32_t * pBuffer;
-
- uint32_t i;
- pBuffer = (uint32_t *)pCommand->pTxBuff;
-
- for (i = 0; i < pCommand->TxSize; i++)
+ if (pCommand->loopback)
  {
-
-  dmaWriteLinkList[i].mbr_ubc = (0x1u << 27)
-         | (0x1u << 24)
-         | (0x1u << 25)
-         | (((0xffffffu << 0) & ((4) << 0)));
-
-  dmaWriteLinkList[i].mbr_sa = (uint32_t)pBuffer;
-
-  dmaWriteLinkList[i].mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
-
-  if ( i == (pCommand->TxSize - 1 ))
-  {
-   if (pCommand->loopback)
-   {
-    dmaWriteLinkList[i].mbr_nda = (uint32_t)&dmaWriteLinkList[0];
-   }
-   else
-   {
-    dmaWriteLinkList[i].mbr_nda = 0;
-   }
-  }
-  else
-  {
-   dmaWriteLinkList[i].mbr_nda = (uint32_t)&dmaWriteLinkList[i+1];
-  }
-
-  pBuffer++;
+  dmaWriteOneDescriptor.mbr_nda = (uint32_t)&dmaWriteOneDescriptor;
  }
+ else
+ {
+  dmaWriteOneDescriptor.mbr_nda = 0;
+ }
+
  xdmadCfg.mbr_cfg = (0x1u << 0)
       | (0x0u << 1)
       | (0x1u << 4)
@@ -24728,10 +24648,10 @@ static uint8_t _Dac_configureLinkList(Dacc *pDacHw, void *pXdmad, DacCmd *pComma
     | (0x1u << 1)
     | (0x1u << 2) ;
 
- XDMAD_ConfigureTransfer( pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, (uint32_t)&dmaWriteLinkList[0], (0x1u << 1));
+ XDMAD_ConfigureTransfer( pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, (uint32_t)&dmaWriteOneDescriptor, (0x1u << 0));
  return 0;
 }
-# 270 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
+# 190 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
 uint32_t Dac_ConfigureDma( DacDma *pDacd ,
   Dacc *pDacHw ,
   uint8_t DacId,
@@ -24745,7 +24665,7 @@ uint32_t Dac_ConfigureDma( DacDma *pDacd ,
  pDacd->pXdmad = pXdmad;
  return 0;
 }
-# 294 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
+# 214 "C:\\Users\\Willy\\Documents\\Mirror\\ITESO_ES\\Embedded_Systems\\DMA_DAC\\SAMV71x_Tezmol\\hal\\libchip_samv7\\source\\dac_dma.c"
 uint32_t Dac_SendData( DacDma *pDacd, DacCmd *pCommand)
 {
  Dacc *pDacHw = pDacd->pDacHw;
@@ -24763,7 +24683,7 @@ uint32_t Dac_SendData( DacDma *pDacd, DacCmd *pCommand)
  if (_DacConfigureDmaChannels(pDacd) )
   return 2;
 
- if (_Dac_configureLinkList(pDacHw, pDacd->pXdmad, pCommand))
+ if (_Dac_configureLinkListOptimized(pDacHw, pDacd->pXdmad, pCommand))
   return 2;
 
  SCB_CleanDCache();
@@ -24772,4 +24692,21 @@ uint32_t Dac_SendData( DacDma *pDacd, DacCmd *pCommand)
  if (XDMAD_StartTransfer( pDacd->pXdmad, dacDmaTxChannel ))
   return 2;
  return 0;;
+}
+
+
+void XDMAC_Handler (void)
+{
+  if(flag == 0)
+  {
+    LED_Set(1);
+    flag = 1;
+  }
+  else
+  {
+    LED_Clear(1);
+    flag = 0;
+  }
+
+  dummy = XDMAC_GetChannelIsr (((Xdmac *)0x40078000U), 0);
 }
